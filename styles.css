@@ -132,7 +132,7 @@ body::after {
   padding: 12px;
   opacity: 1;
   visibility: visible;
-  animation: bubbleFloat 3.8s ease-in-out infinite;
+  animation: bubbleFloat 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   animation-delay: var(--bubble-delay, 0s);
 }
 
