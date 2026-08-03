@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
 html, body {
   margin: 0;
   min-height: 100%;
   background: radial-gradient(circle at top left, #fbf9fe 0%, #f3f1fb 35%, #eef0fb 60%, #f6f8ff 90%);
   color: #2f3b52;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'Libertinus Serif', Georgia, serif;
 }
 
 body {
@@ -69,9 +73,10 @@ body::after {
 
 .brand-name {
   display: block;
+  font-family: 'Libertinus Serif', Georgia, serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.06em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   background: linear-gradient(180deg, #a9a1bb 0%, #b9b2cd 58%, #d8d2e6 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -82,7 +87,7 @@ body::after {
 .brand-tag {
   margin: 2px 0 0;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.4;
@@ -91,6 +96,52 @@ body::after {
   -webkit-background-clip: text;
   background-clip: text;
   transform: skewX(-10deg);
+}
+
+.accent-word {
+  font-family: 'Bitcount Prop Single', 'Libertinus Serif', Georgia, serif;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 32;
+  line-height: 1.4;
+  color: transparent;
+  background: linear-gradient(180deg, #a9a1bb 0%, #b9b2cd 58%, #d8d2e6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.designer-word {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+#engineer-word {
+  display: inline-block;
+  text-align: left;
+  white-space: pre;
+}
+
+.engineer-char {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.08s ease;
+}
+
+.and-word {
+  display: inline-block;
+  margin-left: -0.3ch;
+}
+
+#engineer-word::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 0.08em;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero-nav {

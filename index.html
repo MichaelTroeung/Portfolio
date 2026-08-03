@@ -9,45 +9,55 @@
 <body>
   <header class="hero-header">
     <div class="brand">
-      <span class="brand-name">Michael Troeung</span>
-      <p class="brand-tag">Explore my work and experience</p>
+      <span class="brand-name">Hi, I'm Michael Troeung a <span id="engineer-word" class="accent-word"></span><span class="and-word">and</span> <span class="accent-word designer-word">designer</span> from Toronto, Canada.</span>
+      <p class="brand-tag">I shape products and user experiences that are refined and intuitive.</p>
     </div>
-    <nav class="hero-nav">
-      <div class="hero-row">
-        <a class="bubble bubble--small bubble--a" data-index="0" href="experience.html">Experience</a>
-        <a class="bubble bubble--medium bubble--b" data-index="1" href="education.html">Education</a>
-        <a class="bubble bubble--large bubble--c" data-index="2" href="projects.html">Projects</a>
-        <a class="bubble bubble--medium bubble--d" data-index="3" href="volunteering.html">Volunteering</a>
-      </div>
-      <div class="hero-row">
-        <a class="bubble bubble--small bubble--e" data-index="4" href="honours-awards.html">Honours and Awards</a>
-        <a class="bubble bubble--medium bubble--f" data-index="5" href="about.html">About</a>
-        <a class="bubble bubble--small bubble--g" data-index="6" href="contact.html">Contact</a>
-      </div>
-    </nav>
   </header>
-  <script>
-    const bubbles = document.querySelectorAll('.hero-nav .bubble');
-    const nav = document.querySelector('.hero-nav');
 
-    bubbles.forEach((bubble) => {
-      bubble.addEventListener('mouseenter', () => {
-        bubble.style.setProperty('--bubble-scale', 1.08);
-        bubble.style.setProperty('--bubble-translate', '-4px');
+  <script>
+    const engineerWord = document.getElementById('engineer-word');
+    const word = '<engineer>';
+    let index = 0;
+    let deleting = false;
+    let chars = [];
+
+    if (engineerWord) {
+      engineerWord.innerHTML = '';
+      chars = Array.from(word).map((char) => {
+        const span = document.createElement('span');
+        span.className = 'engineer-char';
+        span.textContent = char;
+        engineerWord.appendChild(span);
+        return span;
       });
-      bubble.addEventListener('focus', () => {
-        bubble.style.setProperty('--bubble-scale', 1.08);
-        bubble.style.setProperty('--bubble-translate', '-4px');
-      });
-      bubble.addEventListener('mouseleave', () => {
-        bubble.style.setProperty('--bubble-scale', 1);
-        bubble.style.setProperty('--bubble-translate', '0');
-      });
-      bubble.addEventListener('blur', () => {
-        bubble.style.setProperty('--bubble-scale', 1);
-        bubble.style.setProperty('--bubble-translate', '0');
-      });
-    });
+    }
+
+    const typeLoop = () => {
+      if (!chars.length) return;
+
+      if (!deleting) {
+        chars[index].style.opacity = '1';
+        index += 1;
+        if (index === chars.length) {
+          deleting = true;
+          setTimeout(typeLoop, 900);
+          return;
+        }
+      } else {
+        chars[index - 1].style.opacity = '0';
+        index -= 1;
+        if (index === 0) {
+          deleting = false;
+          setTimeout(typeLoop, 300);
+          return;
+        }
+      }
+
+      const delay = deleting ? 90 : 120;
+      setTimeout(typeLoop, delay);
+    };
+
+    typeLoop();
   </script>
 </body>
 </html>
