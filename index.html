@@ -7,12 +7,22 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+
+  <div>Time</div>
+       
   <header class="hero-header">
     <div class="brand">
-      <span class="brand-name">Hi, I'm Michael Troeung a <span id="engineer-word" class="accent-word"></span><span class="and-word">and</span> <span class="accent-word designer-word">designer</span> from Toronto, Canada.</span>
+      <span class="brand-name">Hi, I'm Michael Troeung an <span id="engineer-word" class="accent-word"></span><span class="and-word">and</span> <span class="accent-word designer-word">designer</span> from Toronto, Canada.</span>
       <p class="brand-tag">I shape products and user experiences that are refined and intuitive.</p>
     </div>
   </header>
+
+
+
+
+
+  
 
   <script>
     const engineerWord = document.getElementById('engineer-word');
@@ -44,7 +54,16 @@
           return;
         }
       } else {
+
+
+        console.log(String(index));
+
+        const wordLength = word.length;
+        if(index > 1 & index < wordLength){
         chars[index - 1].style.opacity = '0';
+        }
+        
+        
         index -= 1;
         if (index === 0) {
           deleting = false;
